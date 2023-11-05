@@ -87,7 +87,7 @@ public class DispatchTrackingIntegrationTest {
 
     @Test
     @SneakyThrows
-    public void testOrderDispatchedFlow() {
+    public void testDispatchTrackingFlow() {
         DispatchPreparing dispatchPreparing = buildDispatchPreparingEvent(randomUUID());
 
         sendMessage(DISPATCH_TRACKING_TOPIC, dispatchPreparing);

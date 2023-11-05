@@ -12,18 +12,17 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-
-
+@KafkaListener(
+        id = "dispatchTrackingConsumerClient",
+        topics = "dispatch.tracking",
+        groupId = "tracking.dispatch.tracking",
+        containerFactory = "kafkaListenerContainerFactory"
+)
 public class DispatchTrackingHandler {
 
     private final TrackingService trackingService;
 
-    @KafkaListener(
-            id = "dispatchTrackingConsumerClient",
-            topics = "dispatch.tracking",
-            groupId = "tracking.dispatch.tracking",
-            containerFactory = "kafkaListenerContainerFactory"
-    )
+    @KafkaHandler
     public void listen(@Payload DispatchPreparing payload) {
         log.info("Received Message - payload: {}", payload);
 
