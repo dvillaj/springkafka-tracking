@@ -1,0 +1,4 @@
+spring.profiles.active: local
+
+kafka:
+    bootstrap-servers: ${env.kafka.broker}
